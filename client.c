@@ -5,13 +5,13 @@
 #include <string.h>
 #include <sys/socket.h>
 #include <unistd.h>
-#define PORT 27016
+#define PORT 8888
 
 int main(int argc, char const* argv[])
 {
     int status, valread, client_fd;
     struct sockaddr_in serv_addr;
-    char* hello = "CO2: 300000";
+    char* hello = "a";
     char buffer[1024] = { 0 };
     if ((client_fd = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
         printf("\n Socket creation error \n");
@@ -21,7 +21,7 @@ int main(int argc, char const* argv[])
     serv_addr.sin_family = AF_INET;
     serv_addr.sin_port = htons(PORT);
 
-    if (inet_pton(AF_INET, "145.52.127.174", &serv_addr.sin_addr) <= 0) {
+    if (inet_pton(AF_INET, "192.168.1.138", &serv_addr.sin_addr) <= 0) {
         printf("\nInvalid address/ Address not supported \n");
         return -1;
     }
